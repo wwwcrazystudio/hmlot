@@ -1,0 +1,32 @@
+
+// Customization Bootstrap vars from "app/libs/bootstrap/scss/_variables.scss"
+$grid-gutter-width: 20px;
+$grid-columns: 12;
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
+
+$gutter: $grid-gutter-width;
+
+
+//colors
+$body-color: #7A83A1;
+$body-color-50: rgba($body-color, .5);
+$body-bg: #F9F9F9;
+$accent-1: #3396FF;
+$border-color: rgba(#BDC6D4, .4);
+$accent-2: #4CD964;
+
+//fonts
+$default-font: "SFProText-Regular";
+$default-font--light: "SFProText-Light";
+$default-font--medium: "SFProText-Medium";
+$default-font--semibold: "SFProText-Semibold";
+$default-font--heavy: "SFProText-Heavy";
+$SFUIDisplay-Regular: "SFUIDisplay-Regular";
+$SFUIDisplay-Medium: "SFUIDisplay-Medium";
+$SFUIDisplay-Heavy: "SFUIDisplay-Heavy";
+$SFProDisplay-Regular: "SFProDisplay-Regular";
+$SFProDisplay-Bold: "SFProDisplay-Bold";
+$SFCompactDisplay-Light: "SFCompactDisplay-Light";
+$SFUIText-Semibold: "SFUIText-Semibold";
+$SFUIDisplay-Bold: "SFUIDisplay-Bold";

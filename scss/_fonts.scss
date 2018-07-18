@@ -1,0 +1,16 @@
+
+@import "_mixins/font-face";
+
+@include font-face("SFProText-Regular", "../fonts/SFProText-Regular/SFProText-Regular");
+@include font-face("SFProText-Light", "../fonts/SFProText-Light/SFProText-Light");
+@include font-face("SFProText-Medium", "../fonts/SFProText-Medium/SFProText-Medium");
+@include font-face("SFProText-Heavy", "../fonts/SFProText-Heavy/SFProText-Heavy");
+@include font-face("SFProText-Semibold", "../fonts/SFProText-Semibold/SFProText-Semibold");
+@include font-face("SFUIDisplay-Regular", "../fonts/SFUIDisplay-Regular/SFUIDisplay-Regular");
+@include font-face("SFUIDisplay-Medium", "../fonts/SFUIDisplay-Medium/SFUIDisplay-Medium");
+@include font-face("SFUIDisplay-Heavy", "../fonts/SFUIDisplay-Heavy/SFUIDisplay-Heavy");
+@include font-face("SFProDisplay-Regular", "../fonts/SFProDisplay-Regular/SFProDisplay-Regular");
+@include font-face("SFProDisplay-Bold", "../fonts/SFProDisplay-Bold/SFProDisplay-Bold");
+@include font-face("SFCompactDisplay-Light", "../fonts/SFCompactDisplay-Light/SFCompactDisplay-Light");
+@include font-face("SFUIText-Semibold", "../fonts/SFUIText-Semibold/SFUIText-Semibold");
+@include font-face("SFUIDisplay-Bold", "../fonts/SFUIDisplay-Bold/SFUIDisplay-Bold");
