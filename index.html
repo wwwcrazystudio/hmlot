@@ -60,7 +60,10 @@
 
 								<button class="search-form__submit">
 
-									<svg height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#929292" id="icon-111-search"><path d="M19.4271164,21.4271164 C18.0372495,22.4174803 16.3366522,23 14.5,23 C9.80557939,23 6,19.1944206 6,14.5 C6,9.80557939 9.80557939,6 14.5,6 C19.1944206,6 23,9.80557939 23,14.5 C23,16.3366522 22.4174803,18.0372495 21.4271164,19.4271164 L27.0119176,25.0119176 C27.5621186,25.5621186 27.5575313,26.4424687 27.0117185,26.9882815 L26.9882815,27.0117185 C26.4438648,27.5561352 25.5576204,27.5576204 25.0119176,27.0119176 L19.4271164,21.4271164 L19.4271164,21.4271164 Z M14.5,21 C18.0898511,21 21,18.0898511 21,14.5 C21,10.9101489 18.0898511,8 14.5,8 C10.9101489,8 8,10.9101489 8,14.5 C8,18.0898511 10.9101489,21 14.5,21 L14.5,21 Z" id="search"/></g></g></svg>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.707107 -0.707107C0.316582 -1.09763 -0.316582 -1.09763 -0.707107 -0.707107C-1.09763 -0.316582 -1.09763 0.316582 -0.707107 0.707107L0.707107 -0.707107ZM1.29289 2.70711C1.68342 3.09763 2.31658 3.09763 2.70711 2.70711C3.09763 2.31658 3.09763 1.68342 2.70711 1.29289L1.29289 2.70711ZM-0.707107 0.707107L1.29289 2.70711L2.70711 1.29289L0.707107 -0.707107L-0.707107 0.707107Z" transform="translate(16 16)" fill="#7a83a1"/>
+										<rect x="1" y="1" width="10" height="10" rx="5" transform="translate(6 6)" stroke="#7a83a1" stroke-width="2"/>
+									</svg>
 
 								</button>
 
@@ -148,7 +151,7 @@
 
 						<div class="page-header__block">
 
-							<a href="" class="form-control form-control--has-bg form-control--enter-link">Войти</a>
+							<a data-fancybox data-src="#login-popup" href="javascript:;" class="form-control form-control--has-bg form-control--enter-link">Войти</a>
 
 						</div>
 
@@ -2954,6 +2957,59 @@
         </div>
 
     </div>
+
+
+
+	<div class="login-popup" id="login-popup" style="display: none;">
+
+		<div class="login-popup__logo">
+
+			<svg width="73" height="22" viewBox="0 0 64 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M17.916 18V3.9082H14.3418V9.43555H8.72659V3.9082H5.1426V18H8.72659V12.3164H14.3418V18H17.916ZM36.2227 18V3.9082H31.9942L28.586 12.5215H28.4005L24.9825 3.9082H20.754V18H24.0645V9.10352H24.2403L27.3849 16.916H29.6017L32.7364 9.10352H32.9122V18H36.2227Z" transform="translate(-5 -3)" fill="#A1A1A1"/>
+				<path d="M48.631 15.041H42.6447V3.9082H39.0607V18H48.631V15.041ZM54.9651 18.2539C58.4514 18.2539 60.5022 16.1445 60.5022 12.5605C60.5022 9.02539 58.4026 6.87695 54.9651 6.87695C51.5471 6.87695 49.428 9.04492 49.428 12.5605C49.428 16.1348 51.4885 18.2539 54.9651 18.2539ZM54.9651 15.6172C53.6955 15.6172 52.9729 14.5039 52.9729 12.5605C52.9729 10.666 53.7151 9.51367 54.9651 9.51367C56.2151 9.51367 56.9573 10.666 56.9573 12.5605C56.9573 14.4941 56.2346 15.6172 54.9651 15.6172ZM63.0374 4.64062V7.27734H61.3675V9.8457H63.0374V15.0215C63.0374 17.1504 64.1605 18.0195 67.0218 18.0195C67.6761 18.0195 68.3108 17.9609 68.6722 17.8828V15.4219C68.4183 15.4512 68.2034 15.4707 67.803 15.4707C66.9046 15.4707 66.4847 15.0703 66.4847 14.25V9.8457H68.6722V7.27734H66.4847V4.64062H63.0374Z" transform="translate(-5 -3)" fill="#FF2D55"/>
+			</svg>
+
+		</div>
+
+		<div class="login-popup__text">Авторизуйтесь, чтобы ваши товары и настройки сохранялись на всех устройствах, с которых вы заходите на HMLot</div>
+
+		<div class="login-popup-form">
+
+			<div class="login-popup-form__input-wrapper">
+
+                <span class="login-popup-form__animated-icon" style="display: none;">
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 9.9579C0 4.45831 4.47715 0 10 0C15.5228 0 20 4.45831 20 9.9579C20 15.4575 15.5228 19.9158 10 19.9158C9.16667 20.0818 7 20.115 5 18.92" transform="translate(22 2) scale(-1 1)" stroke="url(#paint0_angular)" stroke-width="2.5" stroke-linecap="round"/>
+                        <defs>
+                            <radialGradient id="paint0_angular" cx="0.5" cy="0.5" r="0.5" gradientUnits="userSpaceOnUse" gradientTransform="translate(24.5 18.4221) scale(23.7697 23.6697) rotate(165.379)">
+                                <stop stop-color="#3396FF"/>
+                                <stop offset="0.552486" stop-color="#3396FF" stop-opacity="0.85"/>
+                                <stop offset="1" stop-color="#067FFF" stop-opacity="0.25"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+
+                </span>
+
+				<input type="text" class="form-control form-control--has-bg login-popup-form__input" placeholder="Ваш номер телефона" required>
+
+			</div>
+
+			<button  class="form-control form-control--accent-2 login-popup-form__submit" disabled>Получить номер авторизации</button>
+
+			<div class="login-popup-form__authorization">
+
+				<a href="tel:+7(926)1561236" class="form-control form-control--has-bg login-popup-form__authorization-link">+ 7 (926) 156 12 36</a>
+
+				<div class="login-popup-form__authorization-text">Совершив короткий вызов номеру, вы подтвердите авторизацию на сервисе <span>(ЗВОНОК БЕСПЛАТНЫЙ)</span></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
 
 
 </body>

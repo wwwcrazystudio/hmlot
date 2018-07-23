@@ -8,7 +8,15 @@ $(function() {
             $cle = $(this).find(".search-form__clear");
 
         $inp.on("input", function(){
-            $cle.toggle(!!this.value);
+
+            if ( $(this).val().length > 0 ) {
+                $cle.css('display', 'flex');
+            }
+
+            else{
+                $cle.css('display', 'none');
+            }
+
         });
 
         $cle.on("touchstart click", function(e) {
@@ -134,5 +142,51 @@ $(function() {
         }
 
     };
+
+
+
+//    форма логина
+
+    $(".login-popup-form__input").on('input', function () {
+
+        if ( $(this).val().length > 0 ) {
+
+            $(this).closest('.login-popup-form').find('.login-popup-form__submit').attr('disabled', false);
+
+           $(this).siblings('.login-popup-form__animated-icon').css('display', 'flex');
+
+        }
+
+        else{
+
+            $(this).closest('.login-popup-form').find('.login-popup-form__submit').attr('disabled', true);
+
+            $(this).siblings('.login-popup-form__animated-icon').css('display', 'none');
+
+        }
+
+    });
+
+
+    $(".login-popup-form__submit").on('click', function () {
+
+        $(this).closest('.login-popup').find('.login-popup-form__animated-icon').css('display', 'none');
+
+        $(this).closest('.login-popup').find('.login-popup-form__authorization').fadeIn();
+
+        $(this).css('opacity', '0');
+
+    });
+
+
+
+    //слайдер  на странице product-card
+
+    $(".goods-item-preview__header").slick({
+        prevArrow: '.goods-item-preview__control--prev',
+        nextArrow: '.goods-item-preview__control--next',
+        fade: true,
+    });
+
 
 });

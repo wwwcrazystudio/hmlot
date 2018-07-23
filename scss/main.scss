@@ -19,12 +19,6 @@ body {
 	textarea {
 		border: #666 1px solid;
 		outline: none;
-		&:focus:required:invalid {
-			border-color: red;
-		}
-		&:required:valid {
-			border-color: green;
-		}
 	}
 }
 
@@ -129,7 +123,7 @@ a {
 	position: relative;
 	.form-control{
 		width: 100%;
-		padding-left: 38px;
+		padding-left: 36px;
 		padding-right: 25px;
 		color: #151515;
 		line-height: 1;
@@ -179,21 +173,19 @@ a {
 	svg{
 		width: 20px;
 		height: 20px;
-		path{
-			fill: $body-color;
-		}
 	}
 }
 
 .search-form__clear {
 	position: absolute;
 	right: 11px;
-	top: 50%;
-	transform: translateY(-50%);
 	line-height: 1;
 	display: none;
 	cursor: pointer;
 	font-size: 24px;
+	top: 0;
+	align-items: center;
+	height: 100%;
 }
 
 .city-toggler__marker {
@@ -1304,9 +1296,17 @@ a {
 
 	.goods-item-preview {
 		max-width: 100%;
+		overflow: visible;
 	}
 	.goods-item-preview__header {
 		height: 460px;
+		img{
+			object-fit: contain;
+		}
+		.slick-list,
+		.slick-track{
+			height: 100%;
+		}
 	}
 	.goods-item-preview__price-label {
 		top: 25px;
@@ -1385,6 +1385,7 @@ a {
 	color: #525252;
 	font-size: 19px;
 	line-height: 22px;
+	text-transform: uppercase;
 }
 
 .goods-item__price {
@@ -1393,6 +1394,7 @@ a {
 	line-height: 28px;
 	letter-spacing: 0.05em;
 	font-family: $SFUIDisplay-Bold;
+	white-space: nowrap;
 }
 
 .goods-item__descr {
@@ -1558,6 +1560,10 @@ a {
 			top: 100%;
 			height: 1px;
 			background-color: $border-color;
+			@include sm() {
+				left: 0;
+				right: 0;
+			}
 		}
 	}
 	span{
@@ -1674,4 +1680,176 @@ a {
 	@media (max-width: 360px) {
 		display: none !important;
 	}
+}
+
+.login-popup {
+	background-color: #ffffff;
+	border: 1px solid rgba(0, 0, 0, 0.03);
+	box-shadow: 0px 4px 30px rgba(53, 165, 246, 0.25);
+	border-radius: 16px;
+	min-height: 590px;
+	width: 100%;
+	max-width: 485px;
+	padding-left: 75px;
+	padding-right: 75px;
+	text-align: center;
+	padding-top: 48px;
+	@include sm() {
+		padding-left: 20px;
+		padding-right: 20px;
+		min-height: 455px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	.form-control{
+		width: 100%;
+	}
+	.fancybox-close-small{
+		display: none;
+	}
+}
+
+.login-popup__logo {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 45px;
+	@include sm() {
+		margin-bottom: 20px;
+	}
+}
+
+.login-popup__text{
+	line-height: 25px;
+	font-size: 18px;
+	letter-spacing: 0.01em;
+	color: #000000;
+	opacity: 0.6;
+	margin-bottom: 41px;
+	@include sm() {
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 40px;
+	}
+}
+
+.login-popup-form__submit {
+	justify-content: center;
+	&:focus{
+		outline: 0;
+	}
+}
+
+.login-popup-form__input-wrapper {
+	display: flex;
+	width: 100%;
+	margin-bottom: 30px;
+	position: relative;
+}
+
+.login-popup-form__input {
+	border-radius: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.login-popup-form__submit {
+	&[disabled] {
+		background-color: rgba($accent-2, .5);
+		&:hover{
+			background-color: rgba($accent-2, .5);
+			cursor: auto;
+		}
+	}
+}
+
+.login-popup-form__animated-icon {
+	position: absolute;
+	right: 10px;
+	height: 100%;
+	align-items: center;
+	animation: spCircRot .8s infinite linear;
+}
+
+@keyframes spCircRot {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(359deg); }
+}
+
+.login-popup-form__authorization-link {
+	background-color: #BCC1D0;
+	border-radius: 3px;
+	color: #ffffff;
+	font-family: $SFUIDisplay-Bold;
+	font-size: 20px;
+	letter-spacing: 0.02em;
+	width: auto !important;
+	padding: 4.2px 25px;
+	margin-bottom: 7px;
+	&:hover{
+		color: #ffffff;
+	}
+}
+
+.login-popup-form__authorization-text {
+	font-family: $SFUIDisplay-Bold;
+	font-size: 12px;
+	line-height: 14px;
+	letter-spacing: 0.02em;
+	color: $body-color-50;
+	span{
+		color: #808080;
+	}
+}
+
+
+.fancybox-bg {
+	background-color: rgba(#fff, .75);
+	filter: blur(6px);
+}
+
+.login-popup-form__authorization {
+	margin-top: 20px;
+	display: none;
+}
+
+.fancybox-inner {
+	z-index: 2000;
+}
+
+.goods-item-preview__header-item {
+	height: 100%;
+	position: relative;
+	img{
+		position: relative;
+	}
+}
+
+.goods-item-preview__header-img-cover {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: .4;
+	background-size: cover;
+	background-position: center;
+	filter: blur(13px);
+}
+
+.goods-item-preview__control {
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	user-select: none;
+	display: none;
+}
+
+.goods-item-preview__control--prev{
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.goods-item-preview__control--next{
+	right: 0;
+	transform: translateY(-50%);
 }
