@@ -182,10 +182,20 @@ $(function() {
 
     //слайдер  на странице product-card
 
-    $(".goods-item-preview__header").slick({
+    $(".goods-item .goods-item-preview__header").slick({
         prevArrow: '.goods-item-preview__control--prev',
         nextArrow: '.goods-item-preview__control--next',
         fade: true,
+    });
+
+
+    //скрытие одного из блоков в сайдбаре на странице reserve
+
+
+    $(".reserve-aside__close").on('click', function () {
+
+        $(this).closest('.reserve-aside__block').fadeOut();
+
     });
 
 
