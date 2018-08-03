@@ -27,6 +27,21 @@ $(function() {
     });
 
 
+    $(".search-form").on('click', function () {
+
+        $(this).addClass('is-active');
+
+    });
+
+    $(document).on('click', function (event) {
+
+        if ( !$(event.target).closest('.search-form').length) {
+            $(".search-form").removeClass('is-active');
+        }
+
+    });
+
+
     $(window).on('resize', remoVisibleMenuProductCardMobile);
     remoVisibleMenuProductCardMobile();
     function remoVisibleMenuProductCardMobile() {
@@ -43,6 +58,10 @@ $(function() {
         $(this).addClass('is-active').siblings().removeClass('is-active');
 
         $(this).closest('.city').find('.city-toggler__text').text(text);
+
+        $(this).closest('.city-drop').removeClass('is-active');
+
+        $(this).closest('.city').find('.city-toggler').removeClass('is-active');
 
     });
 
@@ -92,7 +111,7 @@ $(function() {
 
     $('.page-inner').not('.page-inner--product-card').on('click', function (event) {
 
-        if ( !$(event.target).closest('.categories-menu-toggler, .categories-menu-wrapper').length) {
+        if ( !$(event.target).closest('.categories-menu-toggler, .categories-menu__list a').length) {
             $("#categories-menu,.categories-menu-toggler").removeClass('is-active');
         }
 
@@ -223,51 +242,53 @@ $(function() {
 
     // липкая шапка
 
-    stickyHeader();
-    function stickyHeader() {
-
-        // Hide Header on on scroll down
-        var didScroll;
-        var lastScrollTop = 0;
-        var delta = 5;
-        var navbarHeight = $('.page-header').outerHeight();
-
-        $('body').css('padding-top', navbarHeight);
-
-        $(window).scroll(function(event){
-            didScroll = true;
-        });
-
-        setInterval(function() {
-            if (didScroll) {
-                hasScrolled();
-                didScroll = false;
-            }
-        }, 250);
-
-        function hasScrolled() {
-            var st = $(this).scrollTop();
-
-            // Make sure they scroll more than delta
-            if(Math.abs(lastScrollTop - st) <= delta)
-                return;
-
-            // If they scrolled down and are past the navbar, add class .nav-up.
-            // This is necessary so you never see what is "behind" the navbar.
-            if (st > lastScrollTop && st > navbarHeight){
-                // Scroll Down
-                $('.page-header').removeClass('nav-down').css('top', -navbarHeight - 10);
-            } else {
-                // Scroll Up
-                if(st + $(window).height() < $(document).height()) {
-                    $('.page-header').css('top', 0).addClass('nav-down');
-                }
-            }
-
-            lastScrollTop = st;
-        }
-
-    };
+    // stickyHeader();
+    // function stickyHeader() {
+    //
+    //     // Hide Header on on scroll down
+    //     var didScroll;
+    //     var lastScrollTop = 0;
+    //     var delta = 5;
+    //     var navbarHeight = $('.page-header').outerHeight();
+    //
+    //     $('body').css('padding-top', navbarHeight);
+    //
+    //     $(window).scroll(function(event){
+    //         didScroll = true;
+    //     });
+    //
+    //     setInterval(function() {
+    //         if (didScroll) {
+    //             hasScrolled();
+    //             didScroll = false;
+    //         }
+    //     }, 250);
+    //
+    //     function hasScrolled() {
+    //         var st = $(this).scrollTop();
+    //
+    //         // Make sure they scroll more than delta
+    //         if(Math.abs(lastScrollTop - st) <= delta)
+    //             return;
+    //
+    //         // If they scrolled down and are past the navbar, add class .nav-up.
+    //         // This is necessary so you never see what is "behind" the navbar.
+    //         if (st > lastScrollTop && st > navbarHeight){
+    //             // Scroll Down
+    //             $('.page-header').removeClass('nav-down').css('top', -navbarHeight - 10);
+    //             $(".page-header .city-drop").removeClass('is-active');
+    //             $(".page-header .city-toggler").removeClass('is-active');
+    //         } else {
+    //             // Scroll Up
+    //             if(st + $(window).height() < $(document).height()) {
+    //                 $('.page-header').css('top', 0).addClass('nav-down');
+    //             }
+    //         }
+    //
+    //         lastScrollTop = st;
+    //     }
+    //
+    // };
 
 
     //фильтры на странице main-menu.html
@@ -366,6 +387,40 @@ $(function() {
         $(this).closest('.main-menu-submenu').removeClass('is-active');
 
     });
+
+
+    //фиксированное главное вертикальное меню при скролле на странице main-menu
+
+    $(window).on('resize', stickyMainMenu);
+    stickyMainMenu();
+    function stickyMainMenu() {
+
+        var mainMenu = $('#main-menu'),
+            mainMenuOffsetTop = mainMenu.offset().top,
+            mainMenuWrapper = mainMenu.closest('.main-menu-wrapper'),
+            mainMenuWrapperWidth = mainMenuWrapper.width();
+
+
+        mainMenu.css('width', mainMenuWrapperWidth);
+
+        $(window).on('scroll', function () {
+
+            if ( $(this).scrollTop() >= mainMenuOffsetTop ) {
+
+                mainMenu.addClass('fixed');
+
+            }
+
+            else{
+
+                mainMenu.removeClass('fixed');
+
+            }
+
+        });
+
+    }
+
 
 
 });
