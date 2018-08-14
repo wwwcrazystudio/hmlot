@@ -166,7 +166,7 @@ $(function() {
 
 //    форма логина
 
-    $(".login-popup-form__input").on('input', function () {
+    $(".login-popup--type-1 .login-popup-form__input").on('input', function () {
 
         if ( $(this).val().length > 0) {
 
@@ -188,7 +188,7 @@ $(function() {
     });
 
 
-    $(".login-popup-form__submit").on('click', function () {
+    $(".login-popup--type-1 .login-popup-form__submit").on('click', function () {
 
         $(this).closest('.login-popup').find('.login-popup-form__animated-icon').css('display', 'none');
 
@@ -395,34 +395,248 @@ $(function() {
     stickyMainMenu();
     function stickyMainMenu() {
 
-        var mainMenu = $('#main-menu'),
-            mainMenuOffsetTop = mainMenu.offset().top,
-            mainMenuWrapper = mainMenu.closest('.main-menu-wrapper'),
-            mainMenuWrapperWidth = mainMenuWrapper.width();
+        if ( $('#main-menu').length ) {
+
+            var mainMenu = $('#main-menu'),
+                mainMenuOffsetTop = $('#main-menu').offset().top,
+                mainMenuWrapper = mainMenu.closest('.main-menu-wrapper'),
+                mainMenuWrapperWidth = mainMenuWrapper.width();
 
 
-        mainMenu.css('width', mainMenuWrapperWidth);
+            mainMenu.css('width', mainMenuWrapperWidth);
 
-        $(window).on('scroll', function () {
+            $(window).on('scroll', function () {
 
-            if ( $(this).scrollTop() >= mainMenuOffsetTop ) {
+                if ( $(this).scrollTop() >= mainMenuOffsetTop ) {
 
-                mainMenu.addClass('fixed');
+                    mainMenu.addClass('fixed');
+
+                }
+
+                else{
+
+                    mainMenu.removeClass('fixed');
+
+                }
+
+            });
+
+        }
+
+    }
+
+
+    //закрытия попапа с классом reserve-popup на странице favorites
+
+    $(".reserve-popup__btn,.reserve-popup__close").on('click', function () {
+
+        $.fancybox.close();
+
+    });
+
+
+    $("#phone-1").mask('+7 (000) 000-0000');
+    $("#phone-2").mask('+7 (000) 000-0000');
+
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
+    loginPopup();
+    function loginPopup() {
+
+        var parent = $('.login-popup-type-2'),
+            input = parent.find('.login-popup-form__input'),
+            phoneInput = parent.find('.login-popup-form__input--phone'),
+            emailInput = parent.find('.login-popup-form__input--email'),
+            checkbox = parent.find('.login-popup-form__checkox-input'),
+            submit = parent.find('.login-popup-form__submit'),
+            submitText = submit.find('.login-popup-form__text'),
+            submitIcon = parent.find('.login-popup-form__submit-icon'),
+            smsBox = parent.find('.login-popup-form__input-wrapper-sms'),
+            smsBoxInput = smsBox.find('.login-popup-form__input-wrapper-sms-input'),
+            timerWrapper = parent.find('.login-popup__timer-wrapper'),
+            timer = parent.find('.login-popup__timer');
+
+
+        emailInput.on('input', function () {
+
+            if ( $(this).val().length === 0) {
+
+                submit.attr('disabled', true);
+
+                $(this).removeClass('success');
+
+            }
+
+            if ( isEmail( $(this).val() ) ) {
+
+                $(this).addClass('success');
+
+            }
+
+            if ( isEmail( $(this).val() ) && phoneInput.val().length === 17 ) {
+
+                submit.attr('disabled', false);
+
+            }
+
+        }).on('change', function () {
+
+            if ( $(this).val().length === 0 ) {
+
+                $(".login-popup-tooltip--email-info").fadeIn().delay(2000).fadeOut();
+
+                $(this).removeClass('success');
+
+            }
+
+            if ( !isEmail( $(this).val() ) ) {
+
+                $(".login-popup-tooltip--email-error").fadeIn().delay(2000).fadeOut();
+
+                $(this).val('');
+
+                emailInput.focus();
+
+                $(this).removeClass('success');
+
+            }
+
+
+        });
+
+
+        phoneInput.on('input', function () {
+
+            if ( isEmail( emailInput.val() ) && $(this).val().length === 17 ) {
+
+                submit.attr('disabled', false);
+
+            }
+
+            if ( $(this).val().length === 17 ) {
+
+                $(this).addClass('success');
+
+            }
+
+            else if ( !isEmail( emailInput.val() ) && $(this).val().length === 17 ) {
+
+                $(".login-popup-tooltip--email-info").fadeIn().delay(2000).fadeOut();
 
             }
 
             else{
 
-                mainMenu.removeClass('fixed');
+                submit.attr('disabled', true);
+
+                $(this).removeClass('success');
 
             }
 
         });
 
+
+        checkbox.on('change', function () {
+
+            if ( $(this).is(':checked') && emailInput.hasClass('success') && phoneInput.hasClass('success') ) {
+
+                submit.attr('disabled', false);
+
+            }
+
+            else{
+
+                submit.attr('disabled', true);
+
+            }
+
+        });
+
+
+        smsBoxInput.on('input', function () {
+
+
+            if ( $(this).val().length === 4 && checkbox.is(':checked') ) {
+
+                submit.attr('disabled', false);
+
+                submit.addClass('is-active');
+
+            }
+
+            else{
+
+                submit.attr('disabled', true);
+
+            }
+
+        });
+
+
+        submit.on('click', function () {
+
+            submitIcon.fadeIn();
+
+            setTimeout(function () {
+
+                if ( submit.hasClass('is-active') ) {
+
+                    parent.addClass('is-success');
+
+                }
+
+                if ( parent.hasClass('is-success') ) {
+
+                    setTimeout(function () {
+
+                        parent.fadeOut(1000).removeClass('is-success');
+
+                        $.fancybox.close();
+
+                        smsBox.css('display', 'flex').hide();
+
+                        input.val('');
+
+                        submit.removeClass('is-active');
+
+                    }, 1000);
+
+                }
+
+                submit.addClass('is-active');
+
+                parent.addClass('is-active');
+
+                submitIcon.fadeOut();
+
+                smsBox.css('display', 'flex').hide().fadeIn();
+
+                submit.attr('disabled', true);
+
+                submitText.text('Отправить');
+
+                $(timerWrapper).fadeIn();
+
+                timer.timer({
+                    countdown: true,
+                    duration: '2m00s',
+                    format:'%m:%S',
+                    callback: function() {
+                        $(".login-popup__timer-wrapper").fadeOut();
+                    }
+                });
+
+
+            },1000);
+
+
+        });
+
+
     }
 
 
-
 });
-
-

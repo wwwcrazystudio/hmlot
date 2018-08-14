@@ -1758,14 +1758,17 @@ a {
 	}
 }
 
-.login-popup {
+.popup{
 	background-color: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.03);
 	box-shadow: 0px 4px 30px rgba(53, 165, 246, 0.25);
 	border-radius: 16px;
-	min-height: 590px;
 	width: 100%;
 	max-width: 485px;
+}
+
+.login-popup {
+	min-height: 590px;
 	padding-left: 75px;
 	padding-right: 75px;
 	text-align: center;
@@ -2135,6 +2138,9 @@ a {
 	align-items: center;
 	opacity: 0;
 	transition: .3s;
+	.form-control{
+		outline: 0;
+	}
 	@include md() {
 		opacity: 1;
 	}
@@ -2981,4 +2987,222 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 
 .gm-svpc {
 	display: none;
+}
+
+.reserve-popup {
+	color: rgba(#000000, .6);
+	padding-top: 20px;
+	padding-bottom: 25px;
+	position: relative;
+	cursor: auto !important;
+	.fancybox-close-small{
+		display: none;
+	}
+}
+
+.reserve-popup__title {
+	font-family: $default-font--bold;
+	font-size: 18px;
+	line-height: 25px;
+	letter-spacing: 0.01em;
+	margin-bottom: 15px;
+}
+
+.reserve-popup__text {
+	font-size: 12px;
+	line-height: 14px;
+	letter-spacing: 0.02em;
+	font-family: $SFUIDisplay-Regular;
+	margin-bottom: 35px;
+}
+
+.reserve-popup__inner {
+	max-width: 255px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.reserve-popup__logo {
+	margin-bottom: 25px;
+}
+
+.reserve-popup__btn {
+	width: 185px;
+	justify-content: center;
+	border-color: transparent;
+}
+
+.reserve-popup__close {
+	position: absolute;
+	right: 20px;
+	top: 14px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.test {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(#000, .7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-popup-type-2 {
+	min-height: initial;
+	padding-bottom: 60px;
+	transition: .3s;
+	.login-popup-form__input-wrapper{
+		margin-bottom: 25px;
+	}
+	.login-popup-form__input-wrapper--last{
+		margin-bottom: 20px;
+	}
+	.login-popup-form__submit {
+		width: 207px;
+		padding-left: 20px;
+		justify-content: flex-start;
+		outline: 0;
+		border-color: transparent;
+		position: relative;
+		margin-top: 45px;
+	}
+	.login-popup__text{
+		padding-left: 5px;
+		padding-right: 5px;
+		margin-bottom: 35px;
+	}
+	.login-popup__logo{
+		margin-bottom: 40px;
+	}
+	&.is-active{
+		.login-popup-form__checkbox-wrapper{
+			margin-bottom: 25px;
+		}
+		.login-popup-form__submit{
+			justify-content: center;
+			padding-left: 14px;
+		}
+		.login-popup-form__submit-icon{
+			right: 30px;
+		}
+	}
+	.login-popup-form__input{
+		color: #000000;
+	}
+}
+
+.login-popup-form__checkbox-wrapper {
+	display: flex;
+	align-items: center;
+	user-select: none;
+	cursor: pointer;
+	input[type=checkbox] {
+		display: none;
+		&:checked{
+			& ~ .login-popup-form__checkbox {
+				svg{
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.login-popup-form__checkbox {
+	user-select: none;
+	width: 16px;
+	height: 16px;
+	background-color: $accent-1;
+	border-radius: 1px;
+	margin-right: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg{
+		display: none;
+	}
+}
+
+.login-popup-form__checkbox-text {
+	font-size: 12px;
+	font-family: $SFUIDisplay-Regular;
+	color: #000000;
+	letter-spacing: 0.02em;
+	a{
+		color: $accent-1;
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+}
+
+
+.login-popup-form__submit-icon {
+	animation: spCircRot .8s infinite linear;
+	position: absolute;
+	right: 20px;
+	display: none;
+}
+
+.login-popup-form__input-wrapper-sms {
+	flex-direction: column;
+	align-items: flex-start;
+	display: none;
+	.login-popup-form__input{
+		width: 207px;
+		margin-bottom: 5px;
+	}
+}
+
+.login-popup-form__input-wrapper-sms-text{
+	font-size: 12px;
+	font-family: $SFUIDisplay-Medium;
+	color: rgba($accent-1, .5);
+	letter-spacing: 0.02em;
+	display: flex;
+	align-items: center;
+}
+
+.login-popup__timer-wrapper {
+	display: flex;
+	align-items: center;
+	margin-left: 3px;
+}
+
+.login-popup__timer {
+	margin-left: 3px;
+}
+
+.login-popup-tooltip {
+	position: absolute;
+	left: 0;
+	bottom: 105%;
+	width: 100%;
+	background-color: $accent-2;
+	color: #ffffff;
+	font-size: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: none;
+	&::after{
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 12px 10px 0 10px;
+		border-color: $accent-2 transparent transparent transparent;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
