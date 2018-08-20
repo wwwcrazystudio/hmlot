@@ -3206,3 +3206,105 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 		transform: translateX(-50%);
 	}
 }
+
+.page-account {
+	background-color: #E6F0FB;
+}
+
+.page-account-header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-top: 18px;
+	padding-right: 18px;
+}
+
+.page-account-heading {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.account-login {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+	background-color: #ffffff;
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-left: 48px;
+	padding-right: 48px;
+	padding-bottom: 40px;
+}
+
+.account-login__logo {
+	display: flex;
+	margin-bottom: 88px;
+	img{
+		height: 33px;
+		width: 156px;
+	}
+}
+
+.account-login-form__field {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #151515;
+}
+
+.account-login-form__controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 19px;
+	padding-right: 36px;
+}
+
+.account-login-form__enter {
+	width: 110px;
+	justify-content: center;
+	&:focus{
+		outline: 0;
+	}
+}
+
+.account-login-form__forgot-password {
+	font-size: 14px;
+	letter-spacing: 0.02em;
+	color: rgba($body-color, 0.5);
+	transition: .3s;
+	&:hover{
+		color: $body-color;
+	}
+}
+
+.account-login__footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.account-login-form__label {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.account-login-form__spinner {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	animation: spCircRot .8s infinite linear;
+}
