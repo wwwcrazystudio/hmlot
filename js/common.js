@@ -311,7 +311,7 @@ $(function() {
     });
 
 
-    // убрал поисковый бокс в селекте на странице main-menu
+    // убрал поисковый бокс в селекте на селектах
     $('.form-control-select').select2(
         {
             minimumResultsForSearch: -1
@@ -638,10 +638,168 @@ $(function() {
 
     }
 
+    tabs();
+    function tabs() {
+
+        $(".tabs__list").on('click', 'li', function () {
+
+            var target = $(this).attr('data-target');
+
+            $(this).addClass('is-active').siblings().removeClass('is-active');
+
+            $(target).addClass('is-active').siblings().removeClass('is-active');
+
+        });
+
+    }
+
+    customSelects()
+    function customSelects() {
 
 
+        $(".select-toggler").on('click', function () {
+
+            var select = $(this).closest('.select'),
+                selectDrop = select.find('.select-drop');
+
+            $(this).toggleClass('is-active');
+
+            selectDrop.toggleClass('is-active');
+
+            $(this).closest('body').find('.select-drop').not(selectDrop).removeClass('is-active');
+
+        });
 
 
+        $(".select-drop").on('click', 'li', function () {
+
+            var text = $(this).text();
+
+            $(this).addClass('is-active').siblings().removeClass('is-active');
+
+            $(this).closest('.select').find('.add-product-item-select-toggler__text').text( text );
+
+        });
+
+        $(document).on('click', function (event) {
+
+            if( !$(event.target).closest('.select').length ) {
+
+                $(".select-drop").removeClass('is-active');
+
+                $(".select-toggler").removeClass('is-active');
+
+            }
+
+        });
+
+    }
+
+
+    //иконка удаление текста в инпутах
+    clearInputs();
+    function clearInputs() {
+
+        $('.form-control').each(function () {
+
+            var clearBtn = $(this).siblings('.form-control-clear');
+
+            $(this).on('input', function () {
+
+                if ( $(this).val().length > 0 ) {
+
+                    clearBtn.css('display', 'flex');
+
+                }
+
+                else{
+
+                    clearBtn.css('display', 'none');
+
+                }
+
+            });
+
+            clearBtn.on("touchstart click", function(e) {
+
+                e.preventDefault();
+
+                $(this).siblings('.form-control').val("").trigger("input");
+
+            });
+
+        });
+
+    };
+
+
+    function animateSpinnerInput() {
+
+        var spinner = $(this).siblings('.spinner');
+
+        if ( $(this).val().length > 0 ) {
+
+            spinner.css('display', 'flex');
+
+        }
+
+        else{
+
+            spinner.css('display', 'none');
+
+        }
+
+    }
+
+
+    $(".account-login-form__field--email").on('input', animateSpinnerInput );
+
+
+    $(".form-control--enter-link").on('click', function () {
+
+        $(".account-login").addClass('is-active');
+
+        $(this).addClass('is-hidden');
+
+    });
+
+
+    $(document).on('click', function (event) {
+
+        if ( !$(event.target).closest('.account-login, .form-control--enter-link').length ) {
+
+            $(".account-login").removeClass('is-active');
+
+            $(".form-control--enter-link").removeClass('is-hidden');
+
+        }
+
+    });
+
+
+    $('.account-items--left').infiniteslide({
+        'speed': 40, //速さ　単位はpx/秒です。
+        'direction': 'left', //up/down/left/rightから選択
+        'pauseonhover': false, //マウスオーバーでストップ
+        'responsive': true, //子要素の幅を%で指定しているとき
+        'clone': 1 //子要素の複製回数
+    });
+
+
+    $('.account-items--right').infiniteslide({
+        'speed': 40, //速さ　単位はpx/秒です。
+        'direction': 'right', //up/down/left/rightから選択
+        'pauseonhover': false, //マウスオーバーでストップ
+        'responsive': true, //子要素の幅を%で指定しているとき
+        'clone': 1 //子要素の複製回数
+    });
+
+
+    $("input[type='reset']").closest('.add-product').on('reset', function () {
+
+        $(".add-product").find('.form-control-clear').hide();
+
+    });
 
 
 });
